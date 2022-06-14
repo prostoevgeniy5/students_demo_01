@@ -16,6 +16,23 @@ app.get('/', (req: Request , res: Response) => {
   res.send('Hello World!')
 })
 
+app.get('/videos', (req: Request , res: Response) => {
+  // debugger;
+  
+ res.send(videos)
+})
+
+app.post('/videos', (req: Request , res: Response) => {
+  // debugger;
+  const newVideo = { 
+    id: +(new Date()),
+    title: req.body.title,
+    author: "it-incubator,eu"
+  }
+  videos.push(newVideo)
+ res.send(videos)
+})
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
