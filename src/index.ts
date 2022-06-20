@@ -52,7 +52,7 @@ app.delete('/videos/:id', (req: Request , res: Response) => {
 
 app.post('/videos', (req: Request , res: Response) => {
   console.log(req.body)
-  if(req.body.title === undefined || req.body.title.trim() === '') {
+  if(req.body.title === undefined || typeof req.body.title !== 'string' || req.body.title.trim() === '') {
     console.log(req.body.title)
     res.status(400).send({
       "errorsMessages": [
@@ -82,7 +82,7 @@ app.put('/videos/:id', (req: Request , res: Response) => {
     } return item.id === +req.params.id })
   console.log(videoItem)
   if (videoItem) {
-    if(req.body.title === undefined || req.body.title.trim() === '') {
+    if(req.body.title === undefined || typeof req.body.title !== 'string' || req.body.title.trim() === '') {
       console.log(req.body.title)
       res.sendStatus(400)
       res.send({
