@@ -82,7 +82,8 @@ app.put('/videos/:id', (req: Request , res: Response) => {
     } return item.id === +req.params.id })
   console.log(videoItem)
   if (videoItem) {
-    if(req.body.title === undefined || typeof req.body.title !== 'string' || req.body.title.trim() === '') {
+    let title = req.body.title;
+    if(title === undefined || typeof title !== 'string' || title.trim() === '' || title.length > 40) {
       console.log(req.body.title)
       res.status(400).send({
         "errorsMessages": [
