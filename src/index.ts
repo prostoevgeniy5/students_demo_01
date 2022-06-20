@@ -52,9 +52,9 @@ app.delete('/videos/:id', (req: Request , res: Response) => {
 
 app.post('/videos', (req: Request , res: Response) => {
   console.log(req.body)
-  if(req.body.title === undefined || typeof req.body.title !== 'string' || req.body.title.trim() === '') {
-    console.log(req.body.title)
-    res.status(400).send({
+  let title = req.body.title 
+  if(title === undefined || typeof title !== 'string' || title.trim() === '' || title.length > 40) {
+    res.status(400).send({  
       "errorsMessages": [
         {
           "message": "You did not send correct data",
@@ -84,8 +84,7 @@ app.put('/videos/:id', (req: Request , res: Response) => {
   if (videoItem) {
     if(req.body.title === undefined || typeof req.body.title !== 'string' || req.body.title.trim() === '') {
       console.log(req.body.title)
-      res.sendStatus(400)
-      res.send({
+      res.status(400).send({
         "errorsMessages": [
           {
             "message": "You did not send correct data",
