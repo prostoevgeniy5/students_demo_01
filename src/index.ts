@@ -202,7 +202,7 @@ app.post('/bloggers', (req: Request , res: Response) => {
     postRequestErrors.errorsMessages.push(errorObj)
     }
     if(postRequestErrors.errorsMessages.length > 0) {
-      res.status(400).send(postRequestErrors.errorsMessages)
+      res.status(400).send(postRequestErrors)
       return
     }
   const newBlogger = { 
@@ -231,7 +231,7 @@ app.put('/bloggers/:id', (req: Request , res: Response) => {
     putRequestErrors.errorsMessages.push(errorObj)
     }
     if(putRequestErrors.errorsMessages.length > 0) {
-      res.status(400).send(putRequestErrors.errorsMessages)
+      res.status(400).send(putRequestErrors)
       return
     }
   if (bloggerItem) {
@@ -287,7 +287,7 @@ app.post('/posts', (req, res) => {
     postRequestErrors.errorsMessages.push(errorObj);
 }
   if (postRequestErrors.errorsMessages.length > 0) {
-      res.status(400).send(postRequestErrors.errorsMessages);
+      res.status(400).send(postRequestErrors);
       return;
   }
 
@@ -334,7 +334,7 @@ if(checkRequestBodyField(req.body.bloggerId, 'bloggerId')) {
     putRequestErrors.errorsMessages.push(errorObj);
 }
   if (putRequestErrors.errorsMessages.length > 0) {
-      res.status(400).send(putRequestErrors.errorsMessages);
+      res.status(400).send(putRequestErrors);
       return;
   }
   if (postItem) {
